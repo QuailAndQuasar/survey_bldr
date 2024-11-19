@@ -54,6 +54,7 @@ gem "activeadmin_addons"
 gem "arctic_admin"
 gem "rolify"
 gem "haml"
+gem "figaro"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
