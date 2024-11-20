@@ -68,6 +68,7 @@ group :development, :test do
   gem "erblint-github", require: false
   gem "standard"
   gem "rspec-rails", "~> 6.1.0"
+  gem "faker"
 end
 
 group :development do

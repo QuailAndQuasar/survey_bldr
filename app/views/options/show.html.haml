@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Text:
+  = @option.text
+%p
+  %b Sort index:
+  = @option.sort_index
+
+= link_to 'Edit', edit_option_path(@option)
+\|
+= link_to 'Back', options_path
