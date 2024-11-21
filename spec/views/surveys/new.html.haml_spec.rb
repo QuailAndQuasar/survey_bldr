@@ -2,9 +2,12 @@ require 'rails_helper'
 
 RSpec.describe "surveys/new", type: :view do
   before(:each) do
+    topic = create(:topic)
+    customer = create(:customer)
     assign(:survey, Survey.new(
       name: "MyString",
-      topic: "MyString"
+      topic: topic,
+      customer: customer
     ))
   end
 
@@ -15,7 +18,9 @@ RSpec.describe "surveys/new", type: :view do
 
       assert_select "input[name=?]", "survey[name]"
 
-      assert_select "input[name=?]", "survey[topic]"
+      assert_select "select[name=?]", "survey[topic_id]"
+
+      assert_select "select[name=?]", "survey[customer_id]"
     end
   end
 end

@@ -2,9 +2,12 @@ require 'rails_helper'
 
 RSpec.describe "surveys/edit", type: :view do
   let(:survey) {
+    topic = create(:topic)
+    customer = create(:customer)
     Survey.create!(
       name: "MyString",
-      topic: "MyString"
+      topic: topic,
+      customer: customer
     )
   }
 
@@ -19,7 +22,9 @@ RSpec.describe "surveys/edit", type: :view do
 
       assert_select "input[name=?]", "survey[name]"
 
-      assert_select "input[name=?]", "survey[topic]"
+      assert_select "select[name=?]", "survey[topic_id]"
+
+      assert_select "select[name=?]", "survey[customer_id]"
     end
   end
 end

@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :survey do
     name { "MyString" }
-    topic { "MyString" }
+    topic
+    customer
   end
 end

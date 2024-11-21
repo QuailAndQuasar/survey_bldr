@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "questions/new", type: :view do
   before(:each) do
+    topic = create(:topic, label: 'Topic')
     assign(:question, Question.new(
       text: "MyString",
-      topic: "MyString",
+      topic: topic,
       sort_index: 1
     ))
   end
@@ -16,7 +17,7 @@ RSpec.describe "questions/new", type: :view do
 
       assert_select "input[name=?]", "question[text]"
 
-      assert_select "input[name=?]", "question[topic]"
+      assert_select "select[name=?]", "question[topic_id]"
 
       assert_select "input[name=?]", "question[sort_index]"
     end

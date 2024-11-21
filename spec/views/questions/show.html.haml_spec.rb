@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "questions/show", type: :view do
   before(:each) do
+    topic = create(:topic, label: 'Topic')
+
     assign(:question, Question.create!(
       text: "Text",
-      topic: "Topic",
+      topic: topic,
       sort_index: 2
     ))
   end

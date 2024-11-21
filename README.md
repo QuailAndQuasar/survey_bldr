@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-Ruby: `>= 3.1`
+Ruby: `>= 3.3`
 Node: `20.18.0`
 
 ## Local Development
@@ -16,13 +16,13 @@ bin/setup
 ### Running the Development Server
 
 ```
-bin/rails dev
+bin/dev
 ```
 
 ### Seed Data
 
 - Use `db/seeds.rb` to create records that need to exist in all environments.
-- Use `lib/tasks/dev.rake` to create records that only need to exist in development.
+- Use the `dev:prime` rake task (found in `lib/tasks/dev.rake`) to create records that only need to exist in development.
 
 Running `bin/setup` will run `dev:prime`.
 
@@ -38,48 +38,6 @@ Running `bin/setup` will run `dev:prime`.
 [database migrations]: https://edgeguides.rubyonrails.org/active_record_migrations.html#running-migrations
 [reversible]: https://edgeguides.rubyonrails.org/active_record_migrations.html#making-the-irreversible-possible
 
-## Configuration
-
-### Test
-
-- Enables [raise_on_missing_translations][].
-- Disables [action_dispatch.show_exceptions][].
-
-[raise_on_missing_translations]: https://guides.rubyonrails.org/configuring.html#config-i18n-raise-on-missing-translations
-[action_dispatch.show_exceptions]: https://edgeguides.rubyonrails.org/configuring.html#config-action-dispatch-show-exceptions
-
-### Development
-
-- Enables [raise_on_missing_translations][].
-- Enables [annotate_rendered_view_with_filenames][].
-- Enables [i18n_customize_full_message][].
-- Enables [query_log_tags_enabled][].
-
-[raise_on_missing_translations]: https://guides.rubyonrails.org/configuring.html#config-i18n-raise-on-missing-translations
-[annotate_rendered_view_with_filenames]: https://guides.rubyonrails.org/configuring.html#config-action-view-annotate-rendered-view-with-filenames
-[i18n_customize_full_message]: https://guides.rubyonrails.org/configuring.html#config-active-model-i18n-customize-full-message
-[query_log_tags_enabled]: https://guides.rubyonrails.org/configuring.html#config-active-record-query-log-tags-enabled
-
-### Production
-
-- Enables [require_master_key][].
-
-[require_master_key]: https://guides.rubyonrails.org/configuring.html#config-require-master-key
-
-### Linting
-
-- Uses [@thoughtbot/eslint-config][] for JavaScript linting.
-- Uses [@thoughtbot/stylelint-config][] for CSS linting.
-- Uses [prettier][] for additional linting.
-- Uses [better_html][], [erb_lint][], and [erblint-github][] for ERB linting.
-- Uses [standard][] for Ruby linting.
-
-**Available Commands**
-
-- Run `yarn lint` to lint front-end code.
-- Run `yarn fix:prettier` to automatically fix prettier violations.
-- Run `bin/rails standard` to lint ERB and Ruby code.
-- Run `bundle exec standardrb --fix` to fix standard violations.
 
 [@thoughtbot/eslint-config]: https://github.com/thoughtbot/eslint-config
 [@thoughtbot/stylelint-config]: https://github.com/thoughtbot/stylelint-config
@@ -180,10 +138,8 @@ Configures the `test` environment to use the [inline][] adapter.
 
 ### Stylesheets
 
-- Uses [PostCSS][] via [cssbundling-rails][].
+- Uses [Sass] via [dartsass-rails][].
 - Uses [modern-normalize][] to normalize browsers' default style.
-
-Configuration can be found at `postcss.config.js`.
 
 Adds the following stylesheet structure.
 
@@ -196,10 +152,8 @@ app/assets/stylesheets/utilities.css
 Adds `app/assets/static` so that [postcss-url][] has a directory to copy
 assets to.
 
-[PostCSS]: https://postcss.org
-[cssbundling-rails]: https://github.com/rails/cssbundling-rails
-[modern-normalize]: https://github.com/sindresorhus/modern-normalize
-[postcss-url]: https://github.com/postcss/postcss-url
+[Sass]: https://sass-lang.com/
+[dartsass-rails]: https://github.com/rails/dartsass-rails
 
 ### Inline SVG
 

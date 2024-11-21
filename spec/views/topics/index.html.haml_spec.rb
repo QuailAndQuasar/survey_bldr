@@ -16,7 +16,7 @@ RSpec.describe "topics/index", type: :view do
 
   it "renders a list of topics" do
     render
-    cell_selector = 'div>p'
+    cell_selector = 'tr>td'
     assert_select cell_selector, text: Regexp.new("Key".to_s), count: 2
     assert_select cell_selector, text: Regexp.new("Label".to_s), count: 2
   end

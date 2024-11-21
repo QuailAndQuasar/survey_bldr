@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "options/edit", type: :view do
   let(:option) {
+    question = create(:question)
     Option.create!(
       text: "MyString",
-      sort_index: 1
+      sort_index: 1,
+      question: question
     )
   }
 

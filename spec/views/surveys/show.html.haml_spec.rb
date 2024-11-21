@@ -2,9 +2,12 @@ require 'rails_helper'
 
 RSpec.describe "surveys/show", type: :view do
   before(:each) do
+    topic = create(:topic, label: 'Topic')
+    customer = create(:customer, name: 'Customer')
     assign(:survey, Survey.create!(
       name: "Name",
-      topic: "Topic"
+      topic: topic,
+      customer: customer
     ))
   end
 
@@ -12,5 +15,6 @@ RSpec.describe "surveys/show", type: :view do
     render
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/Topic/)
+    expect(rendered).to match(/Customer/)
   end
 end

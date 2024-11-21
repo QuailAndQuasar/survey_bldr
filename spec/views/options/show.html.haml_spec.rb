@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "options/show", type: :view do
   before(:each) do
+    question = create(:question)
     assign(:option, Option.create!(
       text: "Text",
-      sort_index: 2
+      sort_index: 2,
+      question: question
     ))
   end
 
