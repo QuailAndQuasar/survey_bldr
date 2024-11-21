@@ -1,3 +1,4 @@
+= turbo_include_tags
 %h1 Listing questions
 
 %table
@@ -14,11 +15,11 @@
     - @questions.each do |question|
       %tr
         %td= question.text
-        %td= question.topic
+        %td= link_to question.topic.label, question.topic
         %td= question.sort_index
         %td= link_to 'Show', question
         %td= link_to 'Edit', edit_question_path(question)
-        %td= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Destroy', question, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
 
 %br
 

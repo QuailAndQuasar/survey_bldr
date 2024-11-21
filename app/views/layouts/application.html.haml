@@ -8,6 +8,26 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
-  %body
-    = render "flashes"
-    = yield
+    = javascript_include_tag "application", "data-turbo-track": "reload"
+
+  %body{ class: "#{controller_name&.dasherize} #{action_name&.dasherize}" }
+    .layout
+      .header
+        %h1 The Survey Builder
+        .user-info
+          - if current_user
+            %span.current-user Logged in as #{current_user.email}
+            = link_to 'Logout', sign_out_path, method: :delete
+          - else
+            = link_to 'Login', sign_in_path
+      .main
+        .sidebar
+          %ul.nav-links
+            %li= link_to 'Users', users_path
+            %li= link_to 'Customers', customers_path
+            %li= link_to 'Topics', topics_path
+            %li= link_to 'Surveys', surveys_path
+            %li= link_to 'Questions', questions_path
+        .content
+          = render "flashes"
+          = yield

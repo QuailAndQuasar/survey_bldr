@@ -1,0 +1,141 @@
+// Base Reset and Global Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Layout Container
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+// Header Styles
+.header {
+  background-color: #007bff;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+
+  h1 {
+    float: left;
+  }
+  .user-info {
+    float: right;
+    font-size: 1rem;
+  }
+  .current-user {
+    margin-right: 3rem;
+  }
+}
+
+// Main Area
+.main {
+  display: flex;
+  flex: 1; // Ensures the main section fills the remaining space
+  flex-direction: row; // Aligns children horizontally
+
+  .flashes {
+    margin: 2rem 0;
+  }
+}
+
+// Sidebar Styles
+.sidebar {
+  background-color: #343a40;
+  color: white;
+  width: 250px;
+  padding: 1rem;
+  flex: 0;
+  .nav-links {
+    list-style: none;
+    margin-top: 1rem;
+
+    li {
+      margin-bottom: 1rem;
+
+      a {
+        color: white;
+        font-weight: bold;
+        display: block;
+        padding: 0.5rem;
+        border-radius: 4px;
+
+        &:hover {
+          background-color: #495057;
+        }
+      }
+    }
+  }
+}
+
+// Content Styles
+.content {
+  flex: 1; // Ensures the content area takes up remaining space
+  padding: 2rem;
+  background-color: white;
+  overflow-y: auto;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  table {
+    td, th {
+      padding: 5px 10px;
+      text-align: left;
+    }
+  }
+
+  a {
+    color: #0000ff;
+    text-decoration: underline;
+  }
+}
+.show {
+  p {
+    margin: 20px 0;
+  }
+}
+form {
+  .field, .actions {
+    margin: 20px 0;
+  }
+}
+.flashes {
+  .flash-notice {
+    color: green;
+  }
+}
+.options {
+  ol {
+    margin-left: 3rem;
+
+    li {
+      margin: 1rem 0;
+    }
+  }
+}
+button, input[type="submit"] {
+  padding: 5px 10px;
+  margin: 5px 0;
+  background-color: blue;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+}

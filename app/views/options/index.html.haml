@@ -1,3 +1,4 @@
+= turbo_include_tags
 %h1 Listing options
 
 %table
@@ -16,7 +17,7 @@
         %td= option.sort_index
         %td= link_to 'Show', option
         %td= link_to 'Edit', edit_option_path(option)
-        %td= link_to 'Destroy', option, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Destroy', option, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
 
 %br
 

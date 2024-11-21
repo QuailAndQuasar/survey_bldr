@@ -1,3 +1,4 @@
+= turbo_include_tags
 %h1 Listing topics
 
 %table
@@ -16,7 +17,7 @@
         %td= topic.label
         %td= link_to 'Show', topic
         %td= link_to 'Edit', edit_topic_path(topic)
-        %td= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Destroy', topic, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
 
 %br
 

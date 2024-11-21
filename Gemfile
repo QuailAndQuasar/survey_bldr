@@ -46,7 +46,7 @@ gem "bootsnap", require: false
 
 gem "inline_svg"
 gem "title"
-gem "cssbundling-rails"
+gem "dartsass-rails", "~> 0.5.1"
 gem "sidekiq"
 gem "devise"
 gem "activeadmin"
@@ -76,6 +76,7 @@ group :development do
   gem "web-console"
   gem 'haml-rails'
   gem "html2haml"
+  gem "byebug"
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 

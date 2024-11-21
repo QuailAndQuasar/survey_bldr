@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  devise_scope :user do
+    get 'sign_in', to: 'devise/sessions#new'
+    get 'sign_out', to: 'devise/sessions#destroy'
+
+  end
+
   resources :topics
   resources :customers
   resources :options

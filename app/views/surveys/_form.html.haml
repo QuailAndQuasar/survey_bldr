@@ -11,6 +11,9 @@
     = f.text_field :name
   .field
     = f.label :topic
-    = f.text_field :topic
+    = f.collection_select :topic_id, Topic.order(:label), :id, :label
+  .field
+    = f.label :customer
+    = f.collection_select :customer_id, Customer.order(:name), :id, :name
   .actions
     = f.submit 'Save'

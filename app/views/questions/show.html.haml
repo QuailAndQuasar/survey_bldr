@@ -1,11 +1,16 @@
-%p#notice= notice
-
 %p
   %b Text:
   = @question.text
+.options
+  %p
+    %b Options:
+  %ol
+    - @question.options.order(sort_index: :asc).each do |option|
+      %li= option.text
+
 %p
   %b Topic:
-  = @question.topic
+  = link_to @question.topic.label, @question.topic
 %p
   %b Sort index:
   = @question.sort_index

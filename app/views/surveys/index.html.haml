@@ -1,3 +1,4 @@
+= turbo_include_tags
 %h1 Listing surveys
 
 %table
@@ -5,6 +6,7 @@
     %tr
       %th Name
       %th Topic
+      %th Customer
       %th
       %th
       %th
@@ -13,10 +15,12 @@
     - @surveys.each do |survey|
       %tr
         %td= survey.name
-        %td= survey.topic
+        %td= link_to survey.topic.label, survey.topic
+        %td= link_to survey.customer.name, survey.customer
+
         %td= link_to 'Show', survey
         %td= link_to 'Edit', edit_survey_path(survey)
-        %td= link_to 'Destroy', survey, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Destroy', survey, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }
 
 %br
 
