@@ -7,6 +7,16 @@ Node: `20.18.0`
 
 ## Local Development
 
+### Database
+This application is configured to use PostgreSQL, connecting on localhost, port 5432. 
+If you want to connect to a different database or connect on a different host/port, you'll need to make the necessary 
+adjustments in `config/database.yml`.
+### Environment Variables
+Create a new file `config/application.yml` with the following development environment variables:
+```
+DB_USER: your_db_user
+DB_USER_PASSWORD: your_db_user_password
+```
 ### Initial Setup
 
 ```
@@ -21,31 +31,10 @@ bin/dev
 
 ### Seed Data
 
+Running `bin/setup` will run the following tasks to create necessary database records:
+
 - Use `db/seeds.rb` to create records that need to exist in all environments.
 - Use the `dev:prime` rake task (found in `lib/tasks/dev.rake`) to create records that only need to exist in development.
-
-Running `bin/setup` will run `dev:prime`.
-
-### Tasks
-
-- Use `bin/rails suspenders:db:migrate` to run [database migrations][]. This script ensures they are [reversible][].
-- Use `bin/rails suspenders:cleanup:organize_gemfile` to automatically organize the project's Gemfile.
-- Use `bin/rails default` to run the default Rake task. This will do the following:
-  - Run the test suite.
-  - Run a Ruby and ERB linter.
-  - Scan the Ruby codebase for any dependency vulnerabilities.
-
-[database migrations]: https://edgeguides.rubyonrails.org/active_record_migrations.html#running-migrations
-[reversible]: https://edgeguides.rubyonrails.org/active_record_migrations.html#making-the-irreversible-possible
-
-
-[@thoughtbot/eslint-config]: https://github.com/thoughtbot/eslint-config
-[@thoughtbot/stylelint-config]: https://github.com/thoughtbot/stylelint-config
-[prettier]: https://prettier.io
-[better_html]: https://github.com/Shopify/better-html
-[erb_lint]: https://github.com/Shopify/erb-lint
-[erblint-github]: https://github.com/github/erblint-github
-[standard]: https://github.com/standardrb/standard
 
 ## Testing
 
@@ -88,28 +77,6 @@ makes it easy to jump between definitions.
 [FactoryBot]: https://github.com/thoughtbot/factory_bot
 [Fixtures]: https://guides.rubyonrails.org/testing.html#the-low-down-on-fixtures
 
-## Accessibility
-
-Uses [capybara_accessibility_audit][] and
-[capybara_accessible_selectors][] to encourage and enforce accessibility best
-practices.
-
-[capybara_accessibility_audit]: https://github.com/thoughtbot/capybara_accessibility_audit
-[capybara_accessible_selectors]: https://github.com/citizensadvice/capybara_accessible_selectors
-
-For more information, review the [Accessibility Tooling][] section in 
-the [CONTRIBUTING][] guide.
-
-[Accessibility Tooling]: ./CONTRIBUTING.md#accessibility-tooling
-[CONTRIBUTING]: ./CONTRIBUTING.md
-
-## Advisories
-
-Uses [bundler-audit][] to update the local security database and show
-any relevant issues with the app's dependencies via a Rake task.
-
-[bundler-audit]: https://github.com/rubysec/bundler-audit
-
 ## Mailers
 
 [Intercept][] emails in non-production environments by setting `INTERCEPTOR_ADDRESSES`.
@@ -139,7 +106,6 @@ Configures the `test` environment to use the [inline][] adapter.
 ### Stylesheets
 
 - Uses [Sass] via [dartsass-rails][].
-- Uses [modern-normalize][] to normalize browsers' default style.
 
 Adds the following stylesheet structure.
 
@@ -149,23 +115,20 @@ app/assets/stylesheets/components.css
 app/assets/stylesheets/utilities.css
 ```
 
-Adds `app/assets/static` so that [postcss-url][] has a directory to copy
-assets to.
-
 [Sass]: https://sass-lang.com/
 [dartsass-rails]: https://github.com/rails/dartsass-rails
 
-### Inline SVG
+### Templates
 
-Uses [inline_svg][] for embedding SVG documents into views.
+- Uses [Haml] templates instead of ERB.
 
-Configuration can be found at `config/initializers/inline_svg.rb`
 
-[inline_svg]: https://github.com/jamesmartin/inline_svg
+[Haml]: https://haml.info/
+
 
 ### Layout
 
-- A [partial][] for [flash messages][] is located in `app/views/application/_flashes.html.erb`.
+- A [partial][] for [flash messages][] is located in `app/views/application/_flashes.html.haml`.
 - Sets [lang][] attribute on `<html>` element to `en` via `I18n.local`.
 - Dynamically sets `<title>` via the [title][] gem.
 - Disables Turbo's [Prefetch][] in an effort to reduce unnecessary network requests.
