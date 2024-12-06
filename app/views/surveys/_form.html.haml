@@ -1,4 +1,4 @@
-= form_for @survey do |f|
+= form_for @survey, data: { controller: "question-filter" } do |f|
   - if @survey.errors.any?
     #error_explanation
       %h2= "#{pluralize(@survey.errors.count, "error")} prohibited this survey from being saved:"
@@ -9,11 +9,23 @@
   .field
     = f.label :name
     = f.text_field :name
+
   .field
-    = f.label :topic
-    = f.collection_select :topic_id, Topic.order(:label), :id, :label
+    = f.label :topic_id, "Topic"
+    = f.collection_select :topic_id, Topic.order(:label), :id, :label, {}, 
+      class: 'topic-select',
+      data: {question_filter_target: "topic", action: "change->question-filter#filterQuestions"}
+
   .field
-    = f.label :customer
+    = f.label :question_id, "Question"
+    = f.collection_select :question_id, [], :id, :text, {}, 
+      class: 'questions-select',
+      data: { question_filter_target: "questions" },
+      disabled: true
+
+  .field
+    = f.label :customer_id, "Customer"
     = f.collection_select :customer_id, Customer.order(:name), :id, :name
+
   .actions
     = f.submit 'Save'

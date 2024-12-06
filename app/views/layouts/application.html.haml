@@ -1,14 +1,13 @@
 !!!
-%html{:lang => "#{I18n.locale}"}
+%html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title= title
-    %meta{:content => "false", :name => "turbo-prefetch"}/
-    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    %title SurveyBldr
+    %meta{name: "viewport", content: "width=device-width,initial-scale=1"}
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
-    = javascript_include_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+    = javascript_include_tag "application", type: "module", defer: true
 
   %body{ class: "#{controller_name&.dasherize} #{action_name&.dasherize}" }
     .layout
