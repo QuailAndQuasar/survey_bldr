@@ -1,3 +1,4 @@
 //= link_tree ../images
 //= link_tree ../builds
-//= link_tree ./../javascripts .js
+//= link active_material/actions-toggle.js
+//= link_tree ../../javascript .js

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_20_045458) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_20_045468) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,7 +58,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_20_045458) do
     t.datetime "updated_at", null: false
     t.bigint "topic_id", null: false
     t.bigint "customer_id", null: false
+    t.bigint "question_id"
     t.index ["customer_id"], name: "index_surveys_on_customer_id"
+    t.index ["question_id"], name: "index_surveys_on_question_id"
     t.index ["topic_id"], name: "index_surveys_on_topic_id"
   end
 
@@ -95,5 +97,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_20_045458) do
   add_foreign_key "questions", "surveys"
   add_foreign_key "questions", "topics"
   add_foreign_key "surveys", "customers"
+  add_foreign_key "surveys", "questions"
   add_foreign_key "surveys", "topics"
 end
