@@ -1,0 +1,45 @@
+<h1><%= @topic.label %></h1>
+
+<div data-controller="question-filter">
+  <select data-question-filter-target="topic" data-action="change->question-filter#filterQuestions">
+    <option value="">Select a topic</option>
+    <% Topic.all.each do |topic| %>
+      <option value="<%= topic.id %>"><%= topic.label %></option>
+    <% end %>
+  </select>
+
+  <select data-question-filter-target="questions" disabled>
+    <option value="">Select a question</option>
+    <!-- Questions will be populated dynamically -->
+  </select>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Text</th>
+      <th>Topic</th>
+      <th>Sort index</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.text %></td>
+        <td><%= link_to question.topic.label, question.topic %></td>
+        <td><%= question.sort_index %></td>
+        <td><%= link_to 'Show', question %></td>
+        <td><%= link_to 'Edit', edit_question_path(question) %></td>
+        <td><%= link_to 'Destroy', question, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Question', new_question_path %>
