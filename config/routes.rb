@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   end
 
-  resources :topics
+  resources :topics do
+    member do
+      get :questions
+    end
+  end
   resources :customers
   resources :options
   resources :questions
